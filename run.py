@@ -41,45 +41,63 @@ def ship_placement():
     print(list)
 
 
+#def board_selection():
+    col = []
+    row = []
 
-col = []
-row = []
+    print("select a column")
+    col_selection = int(input())
+    print("select a row")
+    row_selection = int(input())
 
-print("select a column")
-col_selection = int(input())
-print("select a row")
-row_selection = int(input())
+    print("    0   1   2   3   4   5   6   7   8")
+    for x in range(0,9):
 
-print("    0   1   2   3   4   5   6   7   8")
-for x in range(0,9):
+        print('\n ' + str(x), end="|")
+        target = False
+        if x == row_selection:
+            target = True
+        for y in range(0, 9):
+            if y != col_selection:
+                print(" = ", end="|")
+            elif target == True:
+                print(" @ ", end="|")
+            else:
+                print(" = ", end="|")
+        print("\n")
 
-    print('\n ' + str(x), end="|")
-    target = False
-    if x == row_selection:
-        target = True
-    for y in range(0, 9):
-        if y != col_selection:
-           print(" = ", end="|")
-        elif target == True:
-             print(" @ ", end="|")
-        else:
-           print(" = ", end="|")
+
+# 4x4 list testing targeting and resetting values
+"""
+list=[[[],[],[],["end"]],
+     [[],[],[],["end"]],
+     [[],[],[],["end"]],
+     [[],[],[],["end"]]]           
+print(list)
 print("\n")
+list[1][3] = ("hit")
+print(list)
+"""
+board = 5
+player_list = []
 
+for x in range(board):
+    print("outer", end="")
+    for y in range(board):
+        if x == 0:
+           player_list.append(["water"])
+           print(player_list)
 
+print("\n put in strike co-ordinates 0-4")
+strike1 = input()
+strike2 = input()
+print(strike1, strike2)
 
-        
-       
+print(player_list[0])
+
 
 
 #num = 3
 #for x in range(0, num):
     #print("hello")
     
-"""
-create_boards(board_scale)
-players_board = 0
-computers_board = 0
-player_life = 0
-com_life = 0
-"""
