@@ -1,84 +1,85 @@
-"""
-board_size = 10
 
+def check_board_size(size):
+    if int(size) in range(8, 20):
+        scaling = 0
+        print('good choice')
+        scaling = int(size)
+        print(type(scaling))
+    else:
+        print('incorrect please try again')
+    
+    return scaling
 
-def create_game_board(game_board):
-    print(f"    {board_size}")
-    print("    -----------------")
+def create_boards(scale):
+    for size in scale:
+        size = "-"
+        print(size)
 
-
-    for row in range(9):
-        game_board.append(["-"] * 9)
-    letter = 0
-    for letter in range(8):
-        print(chr(letter + 65), end=" | ")
-        for column in range(len(game_board[letter])):
-            print(game_board[letter][column], end=" ")
-        print("| ")
-        letter += 1
-
-    print("    -----------------")
-
-
-game_board = []
-create_game_board(game_board)
-"""
-"""
-# the hidden board is the players board were they place thier battleships
-hidden_board = [[" "] * 8 for x in range(8)]
-#the guess board houses the computers ship locations and you guess were they are
-guess_board = [[" "] * 8 for x in range(8)]
-
-letters_to_numbers = {"A": 0, "B": 1, "C": 2, "D": 3, "E": 4, "F": 5, "G": 6, "H": 7 }
-
-def print_board(board):
-    print("  A B C D E F G H")
-    print("  ---------------")
-    row_number = 1
-    for row in board:
-        print("%d|%s|" % (row_number, "|".join(row)))
-# 
-def create_the_ships():
+def ship_placement():
     pass
 
-# we will ask the user for what row and column they want guess were the enemy ship is
-def get_ship_location ():
-    pass
-# will count every time a ship is hit and if all 5 ships are hit then the game is over
-def count_hit_ships():
-    pass
+#def main():
+    print("-----------------------")
+    print("Welcome to battleships\n")
+    print("please select a\n   board size\nbetween 8 and 20")
 
-create_the_ships()
-turns = 10
-#while turns > 0 :
+    board_size = input()
+    board_scale = check_board_size(board_size)
+    print(board_scale)
+    print(type(board_scale))
 
-"""
-#to change size i will have to append and slice the lists
-'''
-row_number = [0, 0, 0, 0, 0, 0,]
-column = [0, 0, 0, 0, 0, 0]
-for row in row_number:
-    print("|")
-    for col in column:
-        print("x", end="")
+#def test_1():
+    list =[]
+    print(list)
+    print("select a position number between 0-8")
+    selection = int(input())
+    for x in range(0,8):
+        if x != selection:
+            list.append(1)
+        else:
+            list.append("x")
+    print(list)
+
+
+
+col = []
+row = []
+
+print("select a column")
+col_selection = int(input())
+print("select a row")
+row_selection = int(input())
+
+print("    0   1   2   3   4   5   6   7   8")
+for x in range(0,9):
+
+    print('\n ' + str(x), end="|")
+    target = False
+    if x == row_selection:
+        target = True
+    for y in range(0, 9):
+        if y != col_selection:
+           print(" = ", end="|")
+        elif target == True:
+             print(" @ ", end="|")
+        else:
+           print(" = ", end="|")
+print("\n")
+
+
+
         
- print("    -----------------")
-'''
-game_board=[]
-column = [0, 0, 0, 0, 0, 0]
-print(str(range(0,8)))
-for row in range(9):
-    game_board.append(["-"] * 9)
+       
 
-letter = 0
-for letter in range(8):
-    print(chr(letter + 65), end=" | ")
-    #  for column in range(len(game_board[letter])):
-    #       print(game_board[letter][column], end=" ")
-    for col in column:
-        print(f" {col}", end="  ")
 
-    print("| ")
-    letter += 1
-
-print("  -----------------")
+#num = 3
+#for x in range(0, num):
+    #print("hello")
+    
+"""
+create_boards(board_scale)
+players_board = 0
+computers_board = 0
+player_life = 0
+com_life = 0
+"""
