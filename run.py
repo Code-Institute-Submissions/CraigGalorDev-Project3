@@ -79,20 +79,33 @@ list[1][3] = ("hit")
 print(list)
 """
 board = 5
-col = [] * board
-row = "water", * board
-col += row
+col = []
 print(col)
-
-
-player_list = [["water", "water", "water", "water", "water"], ["water", "water", "water", "water", "water"], 
-["water", "water", "water", "water", "water"], 
-["water", "water", "water", "water", "water"],
-["water", "water", "water", "water", "water"]]
-print(player_list)
+for x in range(board):
+    col.append([],)
+print(col)
 print("\n")
-player_list[0].insert(1, "hit")
-print(player_list)
+row = "miss" 
+print(row)
+print("\n")
+for y in range(board):
+    col[y].append(row, )
+print(col)
+print("\n")
+
+col[0][0] = "hit"
+print(col)
+print(col[0])
+
+
+#player_list = [["water", "water", "water", "water", "water"], ["water", "water", "water", "water", "water"], 
+#["water", "water", "water", "water", "water"], 
+#["water", "water", "water", "water", "water"],
+#["water", "water", "water", "water", "water"]]
+#print(player_list)
+#print("\n")
+#player_list[0].insert(1, "hit")
+#print(player_list)
 """
 for x in range(0,1):
     print("outer", end="")
