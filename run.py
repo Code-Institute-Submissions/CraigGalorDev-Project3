@@ -79,21 +79,38 @@ list[1][3] = ("hit")
 print(list)
 """
 board = 5
-player_list = []
+col = [] * board
+row = "water", * board
+col += row
+print(col)
 
-for x in range(board):
+
+player_list = [["water", "water", "water", "water", "water"], ["water", "water", "water", "water", "water"], 
+["water", "water", "water", "water", "water"], 
+["water", "water", "water", "water", "water"],
+["water", "water", "water", "water", "water"]]
+print(player_list)
+print("\n")
+player_list[0].insert(1, "hit")
+print(player_list)
+"""
+for x in range(0,1):
     print("outer", end="")
     for y in range(board):
-        if x == 0:
-           player_list.append(["water"])
-           print(player_list)
-
-print("\n put in strike co-ordinates 0-4")
-strike1 = input()
-strike2 = input()
-print(strike1, strike2)
-
-print(player_list[0])
+        player_list.append("water")
+    print(player_list)
+"""
+#print("\n put in strike co-ordinates 0-4")
+#strike1 = input()
+#strike2 = input()
+#print(strike1, strike2)
+#select = player_list[int(strike1)]
+#print(select)
+#select[int(strike2)] = "hit"
+#print(select)
+#player_list[int(strike1)] = select
+#player_list[0][0] = "hit"
+#print(player_list)
 
 
 
