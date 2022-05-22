@@ -66,36 +66,40 @@ def ship_placement():
                 print(" = ", end="|")
         print("\n")
 
+#def list_iteration():
+    # 4x4 list testing targeting and resetting values
+    """
+    list=[[[],[],[],["end"]],
+        [[],[],[],["end"]],
+        [[],[],[],["end"]],
+        [[],[],[],["end"]]]           
+    print(list)
+    print("\n")
+    list[1][3] = ("hit")
+    print(list)
+    """
+    board = 5
+    col = []
+    print(col)
+    for x in range(board):
+        col.append([],)
+        col[x].append([],)
+        water = "-" * board
+        
+    print(col)
+    print("\n")
 
-# 4x4 list testing targeting and resetting values
-"""
-list=[[[],[],[],["end"]],
-     [[],[],[],["end"]],
-     [[],[],[],["end"]],
-     [[],[],[],["end"]]]           
-print(list)
-print("\n")
-list[1][3] = ("hit")
-print(list)
-"""
-board = 5
-col = []
-print(col)
-for x in range(board):
-    col.append([],)
-print(col)
-print("\n")
-row = "miss" 
-print(row)
-print("\n")
-for y in range(board):
-    col[y].append(row, )
-print(col)
-print("\n")
+    row = ["miss"] * board
+    print(row)
+    print("\n")
+    for y in range(board):
+        col[y].append(row, )
+    print(col)
+    print("\n")
 
-col[0][0] = "hit"
-print(col)
-print(col[0])
+    col[0][0] = "hit"
+    print(col)
+    print(col[0])
 
 
 #player_list = [["water", "water", "water", "water", "water"], ["water", "water", "water", "water", "water"], 
@@ -131,3 +135,17 @@ for x in range(0,1):
 #for x in range(0, num):
     #print("hello")
     
+list = [[[]], [[]], [[]], [[]], [[]]]
+print(list, end="\n")
+water = ["water", ] * 5
+for x in range(len(list)):
+    list[x] = [water]
+# this for loop prints out list grid
+for x in range(len(list)):
+    print(list[x], end="\n")
+   
+
+print(list[0][0][0])
+list[0][0][0] = "miss"
+print(list[0][0][0])
+print(list[1][0][0])
