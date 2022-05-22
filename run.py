@@ -134,18 +134,44 @@ for x in range(0,1):
 #num = 3
 #for x in range(0, num):
     #print("hello")
+def set_board_size():
+    list = []
+    print("\nSelect a board size: A number between 5-14")
+    count = int(input())
+    print(count)
+    if count in range(5, 15):
+        print("good choice")
+        for num in range(count):
+            list.append([])
+    else:
+        print("\nsorry that is an incorrect value")
+    print(list)
     
-list = [[[]], [[]], [[]], [[]], [[]]]
-print(list, end="\n")
-water = ["water", ] * 5
-for x in range(len(list)):
-    list[x] = [water]
-# this for loop prints out list grid
-for x in range(len(list)):
-    print(list[x], end="\n")
-   
+    print(list, end="\n")
+    water = "water"
+    for x in range(len(list)):
+        for y in range(len(list)):
+            list[x].append(water)
+    # this for loop prints out list grid
+    for x in range(len(list)):
+        print(list[x], end="\n")
+    
+    print(list[0][0])
+    list[0][3] = "miss"
+    print(list[0][0])
+    print(list[1][0])
+    for x in range(len(list)):
+        print(list[x], end="\n")
 
-print(list[0][0][0])
-list[0][0][0] = "miss"
-print(list[0][0][0])
-print(list[1][0][0])
+def set_player_ships():
+    player_ships = []
+def main():
+    set_board_size()
+    set_player_ships()
+    set_com_ships()
+    display_boards()
+    guess_position()
+    check_lives()
+    
+    
+main()
