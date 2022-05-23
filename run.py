@@ -1,3 +1,4 @@
+import random
 
 def check_board_size(size):
     if int(size) in range(8, 20):
@@ -164,6 +165,22 @@ def set_board_size():
         print(list[x], end="\n")
 
 def set_ships():
+    '''
+    this is the conditional so that ships do not occupy the same space
+    '''
+    player = {'battleship': 0 , 'destroyer': 0}
+    player['battleship'] = [[2], [4]]
+    print(player)
+    print(player['battleship'][0])
+    print("\n")
+    player['destroyer'] = [[3], [4]]
+    print(player)
+    print(player['destroyer'][0])
+    if player['battleship'] == player['destroyer']:
+        print("they are the same")
+    else:
+        print("its all good")
+
     player = {'battleship': 0, 'destroyer': 0, 'submarine': 0, 'patrol boat': 0}
     com = {'battleship': 0, 'destroyer': 0, 'submarine': 0, 'patrol boat': 0}
     print(player)
@@ -211,15 +228,8 @@ def main():
 #main()
 #set_ships()
 
-player = {'battleship': 0 , 'destroyer': 0}
-player['battleship'] = [[2], [4]]
-print(player)
-print(player['battleship'][0])
-print("\n")
-player['destroyer'] = [[3], [4]]
-print(player)
-print(player['destroyer'][0])
-if player['battleship'] == player['destroyer']:
-    print("they are the same")
-else:
-    print("its all good")
+#random numbers one for loop to set the com ships and another for com guess
+col_random_num =0
+row_random_num =0
+for i in range(10):
+    print(round((random.random()) * 10, ))
