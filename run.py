@@ -163,8 +163,42 @@ def set_board_size():
     for x in range(len(list)):
         print(list[x], end="\n")
 
-def set_player_ships():
-    player_ships = []
+def set_ships():
+    player = {'battleship': 0, 'destroyer': 0, 'submarine': 0, 'patrol boat': 0}
+    com = {'battleship': 0, 'destroyer': 0, 'submarine': 0, 'patrol boat': 0}
+    print(player)
+    print("\n")
+    print("To set your ship positions choose a column and then a row")
+    '''
+    print(f"set battleship position")
+    print("select a column")
+    col = input()
+    print("select a row")
+    row = input()
+    combo = col, row
+    player['battleship'] = combo
+    
+    print(player['battleship'])
+    print("\n")
+    '''
+    # now to make it quicker and set the ships
+    last_ship_selection = 0
+    for key, value in player.items():
+        print("\n" + f"set {key} position")
+        print(last_ship_selection)
+        print("\nselect a column")
+        col = input()
+        print("select a row")
+        row = input()
+        combo = col, row
+        if combo == last_ship_selection:
+            print("please try again")
+        else:
+            last_ship_selection = combo
+            player[key] = combo
+    print(player)
+
+
 def main():
     set_board_size()
     set_player_ships()
@@ -174,4 +208,18 @@ def main():
     check_lives()
     
     
-main()
+#main()
+#set_ships()
+
+player = {'battleship': 0 , 'destroyer': 0}
+player['battleship'] = [[2], [4]]
+print(player)
+print(player['battleship'][0])
+print("\n")
+player['destroyer'] = [[3], [4]]
+print(player)
+print(player['destroyer'][0])
+if player['battleship'] == player['destroyer']:
+    print("they are the same")
+else:
+    print("its all good")
