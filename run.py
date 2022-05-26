@@ -61,10 +61,8 @@ def display_boards():
             print(" ")
             for x in range(board_size):
                 print(f"{x}   ", end="")
-                for y in range(board_size):
-                    play = player_board[y][y]
-                    print(play, end="   ")
-                print("\n")    
+                print(f"{player_board[x]}")
+                print("")
             print("would you like to see the computers board y/n")
             option = input()
             if option == 'y':
@@ -87,10 +85,8 @@ def display_boards():
             print(" ")
             for x in range(board_size):
                 print(f"{x}   ", end="")
-                for y in range(board_size):
-                    play = com_board[y][y]
-                    print(play, end="   ")
-                print("\n ")
+                print(f"{com_board[x]}")
+                print("")
             print("would you like to see the players board y/n")
             option = input()
             if option == 'y':
@@ -269,8 +265,9 @@ def set_ships():
     player_ships['battleship'] = [row, col]
     print(player_ships)
     player_board[row][col] = [' @ ']
-    print(player_board)
     display_boards()
+    
+    
     #place ships location on the board for display
     '''
     player_ships['battleship'] = [[2], [4]]
