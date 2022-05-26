@@ -50,9 +50,8 @@ def set_board_size():
             com_board[x].append([' - '])
             
 def display_boards():
-    print(" to diplay the players board enter p or the computers board enter c")
+    print(" Display players board enter p, for the computers board enter c")
     board_selection = input()
-    print(board_selection)
     pick = True
     while pick:
         if board_selection == 'p':
@@ -244,12 +243,36 @@ def display_boards():
     print(list[1][0])
     for x in range(len(list)):
         print(list[x], end="\n")
-
-#def set_ships():
-    
-#this is the conditional so that ships do not occupy the same space
-    
-    
+'''
+def set_ships():
+    #this is the conditional so that ships do not occupy the same space
+    print("Please select the locations of your ships")
+    print("please select a column")
+    col_pick = True
+    while col_pick:
+        col = int(input())
+        if col not in range(0, board_size):
+            print("nope out of range try again")
+        else:
+            col_pick = False
+            col -= 1
+    print("please select a row")
+    row_pick = True
+    while row_pick:
+        row = int(input())
+        if row not in range(0, board_size):
+            print("nope out of range, try again")
+        else:
+            row_pick = False
+            row -= 1
+            
+    player_ships['battleship'] = [row, col]
+    print(player_ships)
+    player_board[row][col] = [' @ ']
+    print(player_board)
+    display_boards()
+    #place ships location on the board for display
+    '''
     player_ships['battleship'] = [[2], [4]]
     print(player_ships)
     print(player_ships['battleship'][0])
@@ -295,11 +318,12 @@ def display_boards():
             last_ship_selection = combo
             player_ships[key] = combo
     print(player_ships)
-
 '''
+
 def main():
     board_size = get_board_size()
     set_board_size()
     display_boards()
-    
+    set_ships()
 main()
+
