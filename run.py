@@ -22,7 +22,7 @@ com_ships = {'battleship': 0, 'destroyer': 0, 'submarine': 0, 'patrol boat': 0}
 '''
 random number generator to  set the com ships location and for com guess
 '''
-    #num = round((random.random()) * 10, )
+   #num = round((random.random()) * 10, )
    # return num
 
 def get_board_size():
@@ -51,25 +51,30 @@ def set_board_size():
             
 def display_boards():
     print(" Display players board enter p, for the computers board enter c")
-    board_selection = input()
     pick = True
     while pick:
+        board_selection = input()
         if board_selection == 'p':
             print(" Players Board ")
-            for x in range(board_size):
+            '''
+            #for x in range(board_size):
                 print("        " + f"{x}", end='')
-            print(" ")
-            for x in range(board_size):
-                print(f"{x}   ", end="")
-                print(f"{player_board[x]}")
-                print("")
+           # print(" ")
+            #for x in range(board_size):
+             #   print(f"{x}   ", end="")
+             #   print(f"{player_board[x]}")
+             #   print("")
+             '''
             print("would you like to see the computers board y/n")
             option = input()
             if option == 'y':
+                print("computers board shown")
                 board_selection = 'c'
             elif option == 'n':
-                second_pick = True
-                while second_pick:
+                print("take a guess")
+                '''
+                #second_pick = True
+                #while second_pick:
                     print("would you like to make a guess y/n")
                     guess = input()
                     if guess == 'y':
@@ -80,6 +85,7 @@ def display_boards():
                         board_selection = 'p'
                     else:
                         print(" that is not a selection")
+                        '''
             else:
                 print("thats not a selection")
 
@@ -116,6 +122,7 @@ def display_boards():
                 print("thats not a selection")        
         else:
             print("that is an incorrect selection")
+            print("please pick p for player or c for computer")
 '''
 #def main():
     print("-----------------------")
@@ -263,8 +270,10 @@ def set_ships():
         ship = key
         selection = True
         while selection:
-            print(f"select {ship} position")
-            print("please select a column")
+            print("\n" + f"select {ship} position")
+            column = board_size
+            column -= 1
+            print(f"please select a column from 0 to {column}")
             col_pick = True
             while col_pick:
                 col = int(input())
@@ -272,8 +281,9 @@ def set_ships():
                     print("nope out of range try again")
                 else:
                     col_pick = False
-                    
-            print("please select a row")
+            rows = board_size
+            rows -= 1        
+            print(f"please select a row from 0 to {rows}")
             row_pick = True
             while row_pick:
                 row = int(input())
@@ -287,18 +297,18 @@ def set_ships():
                 if boat == last_boat[x]:
                     check += 1 
             if check > 0:
-                print("This position is taken sailor")
+                print("\nThis position is taken sailor\n")
             else:
-                print("Yep, looks good setting up here captain")
+                print("\nYep, looks good setting up here captain\n")
                 last_boat.append(boat)
                 check = 0
                 selection = False
         player_ships[key] = [col], [row]
+        print("")
+        print("your current ship locations")
         print(player_ships)
-        print(player_board[col][row])
         player_board[row][col] = [' @ ']
-        print(player_board[col][row])
-        display_boards()
+        display_ships()
     
     
     #place ships location on the board for display
@@ -349,12 +359,71 @@ def set_ships():
             player_ships[key] = combo
     print(player_ships)
 '''
+def display_ships():
+    print("")
+    print("Display boards")
+    blue = True
+    while blue:
+        
+        print("To display players board select 'p'")
+        print("To display computers board select 'c'")
+        print("To skip board display select 's'")
+        selection = input()
+        if selection == 'p':
+            print("\n")
+            print("   Player Board")
+            print("  ", end=" ")
+            for x in range(board_size):
+                
+                print('-----', end="-")
+            print("")
+            print("")
+            print("  ", end=" ")
+            for x in range(board_size):
+                
+                print(f'  {x}', end="   ")
+            print("")
+            print("")
+            for x in range(board_size):
+                print(f'{x}', end=" | ")
+                for y in range(board_size):
+                    print(f'{player_board[x][y][0]}', end=" | ")
+                print("")
+                print("")
+
+        elif selection == 'c':
+            print("\n")
+            print("   Computers Board")
+            print("  ", end=" ")
+            for x in range(board_size):
+                
+                print('-----', end="-")
+            print("")
+            print("")
+            print("  ", end=" ")
+            for x in range(board_size):
+                
+                print(f'  {x}', end="   ")
+            print("")
+            print("")
+            for x in range(board_size):
+                print(f'{x}', end=" | ")
+                for y in range(board_size):
+                    print(f'{com_board[x][y][0]}', end=" | ")
+                print("")
+                print("")
+        elif selection == 's':
+            print("")
+            blue = False
+        else:
+            print("that selection is not supported")
 
 def main():
     board_size = get_board_size()
     set_board_size()
-    display_boards()
+    display_ships()
     set_ships()
+    '''
     print("\n")
     print("Player Board")
     print("  ", end=" ")
@@ -375,6 +444,8 @@ def main():
             print(f'{player_board[x][y][0]}', end=" | ")
         print("")
         print("")
+        '''
 main()
 
-#set_ships()
+
+
