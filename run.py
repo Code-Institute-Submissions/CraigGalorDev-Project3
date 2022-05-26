@@ -57,7 +57,7 @@ def display_boards():
         if board_selection == 'p':
             print(" Players Board ")
             for x in range(board_size):
-                print("       " + f"{x}", end='  ')
+                print("        " + f"{x}", end='')
             print(" ")
             for x in range(board_size):
                 print(f"{x}   ", end="")
@@ -282,7 +282,7 @@ def set_ships():
         player_ships[key] = [col], [row]
         print(player_ships)
         print(player_board[col][row])
-        player_board[col][row] = [' @ ']
+        player_board[row][col] = [' @ ']
         print(player_board[col][row])
         display_boards()
     
@@ -341,6 +341,16 @@ def main():
     set_board_size()
     display_boards()
     set_ships()
+    print("\n")
+    for x in range(board_size):
+        print(f'     {x}', end=" ")
+    print("")
+    for x in range(board_size):
+        print(f'{x}', end=" | ")
+        for y in range(board_size):
+            print(f'{player_board[x][y][0]}', end=" | ")
+        print("")
+        print("")
 main()
 
 #set_ships()
