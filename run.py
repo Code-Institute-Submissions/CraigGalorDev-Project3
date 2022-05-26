@@ -3,13 +3,13 @@ import random
 # creating the global variables
 # the player sets the numerical value of the board size
 # this then sets the size of the playable board size to be displayed
-board_size = 0
+board_size = 6
 # player board displays were the player positioned thier ships and updated information miss and hits 
-player_board = 0
+player_board = []
 # only the pseudo board is displayed on screen showing only updated miss and hits 
 # the com board has the ships locations
-com_board = 0
-com_pseudo_board = 0
+com_board = []
+com_pseudo_board = []
 # in this basic version of battleships each ship equals a life 
 # when all 4 lives/ships are gone its game over
 player_lives = 4
@@ -18,16 +18,51 @@ com_lives = 4
 player_ships = {'battleship': 0, 'destroyer': 0, 'submarine': 0, 'patrol boat': 0}
 com_ships = {'battleship': 0, 'destroyer': 0, 'submarine': 0, 'patrol boat': 0}
 
-def random_num():
-    '''
-    random number generator to  set the com ships location and for com guess
-    '''
-    num = round((random.random()) * 10, )
-    return num
+#def random_num():
+'''
+random number generator to  set the com ships location and for com guess
+'''
+    #num = round((random.random()) * 10, )
+   # return num
 
-#def ship_placement():
-    pass
+def get_board_size():
 
+    board_set = True
+    while board_set:
+        print("\nSelect a board size: A number between 5-14")
+        count = int(input())
+        if count in range(5, 15):
+            print("good choice")
+            count += 1 
+            board_set = False
+           
+        else:
+            print("\nsorry that is an incorrect value")
+            print("you need to pick a number between 5-14")
+    return count
+
+def set_board_size():       
+    for x in range(board_size):
+        player_board.append([])
+        com_board.append([])
+        for y in range(board_size):
+            player_board[x].append([' - '])
+            com_board[x].append([' - '])
+            
+def display_boards():
+    print(" ")
+    for x in range(board_size):
+        print("       " + f"{x}", end='  ')
+    print(" ")
+    for x in range(board_size):
+        print(f"{x}   ", end="")
+        for y in range(board_size):
+            play = player_board[y][y]
+            print(play, end="   ")
+        print("\n ")
+               
+        
+"""
 #def main():
     print("-----------------------")
     print("Welcome to battleships\n")
@@ -74,7 +109,6 @@ def random_num():
 
 #def list_iteration():
     # 4x4 list testing targeting and resetting values
-    """
     list=[[[],[],[],["end"]],
         [[],[],[],["end"]],
         [[],[],[],["end"]],
@@ -83,7 +117,7 @@ def random_num():
     print("\n")
     list[1][3] = ("hit")
     print(list)
-    """
+    
     board = 5
     col = []
     print(col)
@@ -107,13 +141,13 @@ def random_num():
     print(col)
     print(col[0])
 
-    """
+
     for x in range(0,1):
         print("outer", end="")
         for y in range(board):
             player_list.append("water")
         print(player_list)
-    """
+    
 #print("\n put in strike co-ordinates 0-4")
 #strike1 = input()
 #strike2 = input()
@@ -217,14 +251,11 @@ def random_num():
             player_ships[key] = combo
     print(player_ships)
 
-
-#def main():
-    #set_board_size()
-   # set_ships()
-   # display_boards()
-   # guess_position()
-   #3
-   # check_lives()
+"""
+def main():
+    board_size = get_board_size()
+    print(board_size)
+    set_board_size()
+    display_boards()
     
-#main()
-#set_ships()
+main()
