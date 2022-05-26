@@ -68,12 +68,18 @@ def display_boards():
             if option == 'y':
                 board_selection = 'c'
             elif option == 'n':
-                print("would you like to make a guess y/n")
-                guess = input()
-                if guess == 'y':
-                    pick = False
-                else:
-                    board_selection = 'p'
+                second_pick = True
+                while second_pick:
+                    print("would you like to make a guess y/n")
+                    guess = input()
+                    if guess == 'y':
+                        second_pick = False
+                        pick = False
+                    elif guess == 'n':
+                        second_pick = False
+                        board_selection = 'p'
+                    else:
+                        print(" that is not a selection")
             else:
                 print("thats not a selection")
 
@@ -96,8 +102,16 @@ def display_boards():
                 guess = input()
                 if guess == 'y':
                     pick = False
-                else:
-                    board_selection = 'c'
+                    second_pick = True
+                    while second_pick:
+                        print("would you like to make a guess y/n")
+                        guess = input()
+                        if guess == 'y':
+                            second_pick = False
+                            pick = False
+                        elif guess == 'n':
+                            second_pick = False
+                            board_selection = 'c'
             else:
                 print("thats not a selection")        
         else:
@@ -342,8 +356,18 @@ def main():
     display_boards()
     set_ships()
     print("\n")
+    print("Player Board")
+    print("  ", end=" ")
     for x in range(board_size):
-        print(f'     {x}', end=" ")
+        
+        print('-----', end="---")
+    print("")
+    print("")
+    print("  ", end=" ")
+    for x in range(board_size):
+        
+        print(f'  {x}', end="   ")
+    print("")
     print("")
     for x in range(board_size):
         print(f'{x}', end=" | ")
