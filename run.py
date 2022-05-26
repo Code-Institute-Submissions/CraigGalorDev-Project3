@@ -15,7 +15,7 @@ com_pseudo_board = []
 player_lives = 4
 com_lives = 4
 # these dictionaries will hold the positions of the ships location on the board
-player_ships = {'battleship': 0, 'destroyer': 0, 'submarine': 0, 'patrol boat': 0}
+player_ships = {'battleship': [], 'destroyer': [], 'submarine': [], 'patrol boat': []}
 com_ships = {'battleship': 0, 'destroyer': 0, 'submarine': 0, 'patrol boat': 0}
 
 #def random_num():
@@ -243,29 +243,48 @@ def display_boards():
 def set_ships():
     #this is the conditional so that ships do not occupy the same space
     print("Please select the locations of your ships")
-    print("please select a column")
-    col_pick = True
-    while col_pick:
-        col = int(input())
-        if col not in range(0, board_size):
-            print("nope out of range try again")
-        else:
-            col_pick = False
-            col -= 1
-    print("please select a row")
-    row_pick = True
-    while row_pick:
-        row = int(input())
-        if row not in range(0, board_size):
-            print("nope out of range, try again")
-        else:
-            row_pick = False
-            row -= 1
-            
-    player_ships['battleship'] = [row, col]
-    print(player_ships)
-    player_board[row][col] = [' @ ']
-    display_boards()
+    
+    last_boat = []
+    for key, value in player_ships.items():
+        ship = key
+        selection = True
+        while selection:
+            print(f"select {ship} position")
+            print("please select a column")
+            col_pick = True
+            while col_pick:
+                col = int(input())
+                if col not in range(0, board_size):
+                    print("nope out of range try again")
+                else:
+                    col_pick = False
+                    
+            print("please select a row")
+            row_pick = True
+            while row_pick:
+                row = int(input())
+                if row not in range(0, board_size):
+                    print("nope out of range, try again")
+                else:
+                    row_pick = False
+            boat = row, col
+            check = 0
+            for x in range(len(last_boat)):
+                if boat == last_boat[x]:
+                    check += 1 
+            if check > 0:
+                print("This position is taken sailor")
+            else:
+                print("Yep, looks good setting up here captain")
+                last_boat.append(boat)
+                check = 0
+                selection = False
+        player_ships[key] = [col], [row]
+        print(player_ships)
+        print(player_board[col][row])
+        player_board[col][row] = [' @ ']
+        print(player_board[col][row])
+        display_boards()
     
     
     #place ships location on the board for display
@@ -324,3 +343,4 @@ def main():
     set_ships()
 main()
 
+#set_ships()
