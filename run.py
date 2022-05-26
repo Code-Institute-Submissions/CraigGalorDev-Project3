@@ -50,19 +50,64 @@ def set_board_size():
             com_board[x].append([' - '])
             
 def display_boards():
-    print(" ")
-    for x in range(board_size):
-        print("       " + f"{x}", end='  ')
-    print(" ")
-    for x in range(board_size):
-        print(f"{x}   ", end="")
-        for y in range(board_size):
-            play = player_board[y][y]
-            print(play, end="   ")
-        print("\n ")
-               
-        
-"""
+    print(" to diplay the players board enter p or the computers board enter c")
+    board_selection = input()
+    print(board_selection)
+    pick = True
+    while pick:
+        if board_selection == 'p':
+            print(" Players Board ")
+            for x in range(board_size):
+                print("       " + f"{x}", end='  ')
+            print(" ")
+            for x in range(board_size):
+                print(f"{x}   ", end="")
+                for y in range(board_size):
+                    play = player_board[y][y]
+                    print(play, end="   ")
+                print("\n")    
+            print("would you like to see the computers board y/n")
+            option = input()
+            if option == 'y':
+                board_selection = 'c'
+            elif option == 'n':
+                print("would you like to make a guess y/n")
+                guess = input()
+                if guess == 'y':
+                    pick = False
+                else:
+                    board_selection = 'p'
+            else:
+                print("thats not a selection")
+
+        elif board_selection == 'c':
+            print(" Computers Board ")
+
+            for x in range(board_size):
+                print("       " + f"{x}", end='  ')
+            print(" ")
+            for x in range(board_size):
+                print(f"{x}   ", end="")
+                for y in range(board_size):
+                    play = com_board[y][y]
+                    print(play, end="   ")
+                print("\n ")
+            print("would you like to see the players board y/n")
+            option = input()
+            if option == 'y':
+                board_selection = 'p'
+            elif option == 'n':
+                print("would you like to make a guess y/n")
+                guess = input()
+                if guess == 'y':
+                    pick = False
+                else:
+                    board_selection = 'c'
+            else:
+                print("thats not a selection")        
+        else:
+            print("that is an incorrect selection")
+'''
 #def main():
     print("-----------------------")
     print("Welcome to battleships\n")
@@ -201,9 +246,9 @@ def display_boards():
         print(list[x], end="\n")
 
 #def set_ships():
-    '''
-    this is the conditional so that ships do not occupy the same space
-    '''
+    
+#this is the conditional so that ships do not occupy the same space
+    
     
     player_ships['battleship'] = [[2], [4]]
     print(player_ships)
@@ -216,7 +261,7 @@ def display_boards():
         print("they are the same")
     else:
         print("its all good")
-    '''
+    
     player = {'battleship': 0, 'destroyer': 0, 'submarine': 0, 'patrol boat': 0}
     com = {'battleship': 0, 'destroyer': 0, 'submarine': 0, 'patrol boat': 0}
     print(player)
@@ -233,7 +278,7 @@ def display_boards():
     
     print(player['battleship'])
     print("\n")
-    '''
+    
     # now to make it quicker and set the ships
     last_ship_selection = 0
     for key, value in player_ships.items():
@@ -251,10 +296,9 @@ def display_boards():
             player_ships[key] = combo
     print(player_ships)
 
-"""
+'''
 def main():
     board_size = get_board_size()
-    print(board_size)
     set_board_size()
     display_boards()
     
