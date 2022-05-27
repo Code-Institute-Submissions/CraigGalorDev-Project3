@@ -2,18 +2,19 @@
 -----
 # BATTLESHIPS
 
-this is a Python generated game which is played through the terminal and is deployed using a Heroku mock terminal.
+![app](assets/images/app_terminal.png)
+
+this is a Python generated game which is played through the Code institute mock terminal on Heroku
 
 For those who never played BATTLESHIPS before, The object of the game is to take turns at 
 guessing were your opponets ships are positioned on a numbered grid.
 
-there are four ships, each player has the battleship, destroyer, submarine and patrol boat
-each ship represents a life and one position on the grid, making four lives in total for each player.
+there are four ships, each player has a battleship, destroyer, submarine and patrol boat
+each ship represents a life and one sqaure position on the grid, making four lives in total for each player.
 
 who ever can destroy all of thier opponets ships wins the game.
 
-Here is the live version of my project
-image
+<a href="https://craigsbattleships.herokuapp.com/" target = "_blank"> Here is the live version of my project </a>
 
 ## How to play
 The terminal displays a welcoming intro with a quick guide to how each game element
@@ -47,10 +48,10 @@ the player declared the winner or loser.
 
   ![size5](assets/images/board_size5.png)![size8](assets/images/board_size8.png)
 
-  board changes to size as long as its in the range offered
+  board changes to size set as long as its in the range offered
   otherwise exception handaling repeats input offer until satisfied 
 
-image
+
 
 * **Board display options**
 
@@ -88,7 +89,7 @@ image
     Lists store the populated grid icon strings based
     on board size input and updated as the game carries on
 
-    Dictionares store the cloumn and row values of each ship location
+    Dictionares store the column and row values of each ship location
 
 
 
@@ -112,10 +113,14 @@ image
 This project was deployed using Code Institute mock terminal on Heroku
 
 ### Steps for deployment
-* 
-* 
-* 
-* 
+* select new app on heroku account
+* give it the name craigsbattleships
+* select region Europe
+* Config var in Heroku settings key = PORT value = 8000
+* install buildpacks heroku/python and heroku/node.js
+* use gitpod terminal to deploy to heroku via CLI
+
+
 # Credits
 Code Institute for deployment terminal
 
