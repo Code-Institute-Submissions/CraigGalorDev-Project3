@@ -20,7 +20,7 @@ com_ships = {'battleship': 0, 'destroyer': 0, 'submarine': 0, 'patrol boat': 0}
 
 def random_num():
     '''
-    random number generator to  set the com ships location and for com guess
+    random number generator to set the com ships location and for com guess
     '''
     in_range = True
     while in_range:
@@ -110,7 +110,6 @@ def set_ships():
     print('---"computer seting its ships"---')
     display_ships()
     
-    
 def display_ships():
     print("")
     print("Display boards")
@@ -170,34 +169,67 @@ def display_ships():
         else:
             print("\n---That selection is not supported---\n")
 
+def start_game():
+    player_lives = 4
+    com_lives = 4
+    game_on = True
+    while game_on:
+        print('-----"READY TO FIGHT"-----')
+        print('\n///missile tubes ready///')
+        print('\n---"Captain select a column"---')
+        guess_col = input()
+        print('\n---"Captain select a row"---')
+        guess_row = input()
+        print("\n///LAUNCH MISSILE///")
+        print('---"missile away"---')
+        print(com_board[guess_col][guess_row])
+        if com_board[guess_col][guess_row][0] == '@':
+            print('\n---"KABOOM"---')
+            print('---"Thats a hit Captain"---')
+            com_board[guess_col][guess_row][0] = 'X'
+            com_pseudo_board[guess_col][guess_row][0] = 'X'
+            com_lives -= 1
+            display_ships()
+        else:
+            print('\n---"SPLASH"---')
+            print('---"Thats a miss Captain"---')
+            com_board[guess_col][guess_row][0] = 'O'
+            com_pseudo_board[guess_col][guess_row][0] = 'O'
+            display_ships()
+        print('\n---"ALARM"---')
+        print('---"incoming missile Captain"---')
+        com_guess1 = random_num()
+        com_guess2 = random_num()
+        if player_board[com_guess1][com_guess2][0] == '@':
+            print('\n---"KABOOM"---')
+            print('---"Thats a hit Captain"---')
+            player_board[com_guess1][com_guess2][0] = 'X'
+            player_lives -= 1
+            display_ships()
+        else:
+            print('\n---"SPLASH"---')
+            print('---"Thats a miss Captain"---')
+            player_board[com_guess1][com_guess2][0] = 'O'
+            display_ships()
+        if player_lives == 0:
+            print('\n---"GAME OVER"---')
+            print('---"YOU WIN"---')
+            game_on = False
+        elif com_lives == 0:
+            print('\n---"GAME OVER"---')
+            print('\n---"YOU LOST"---')
+            game_on = False
+        else:
+            print('---"Were still in this fight Captain"---')
+
+
 def main():
     board_size = get_board_size()
     set_board_size()
     display_ships()
     set_ships()
-    '''
-    print("\n")
-    print("Player Board")
-    print("  ", end=" ")
-    for x in range(board_size):
-        
-        print('-----', end="---")
-    print("")
-    print("")
-    print("  ", end=" ")
-    for x in range(board_size):
-        
-        print(f'  {x}', end="   ")
-    print("")
-    print("")
-    for x in range(board_size):
-        print(f'{x}', end=" | ")
-        for y in range(board_size):
-            print(f'{player_board[x][y][0]}', end=" | ")
-        print("")
-        print("")
-        '''
+    start_game()
+    
 main()
-
 
 
