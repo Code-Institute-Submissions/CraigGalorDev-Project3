@@ -90,9 +90,9 @@ def set_ships():
                 if boat == last_boat[x]:
                     check += 1 
             if check > 0:
-                print('\n---"This position is taken sailor\n"---')
+                print('\n---"This position is taken sailor"---\n')
             else:
-                print('\n---"Yep, looks good setting up here captain"---\n')
+                print('\n---"Yep, looks good setting up here Captain"---\n')
                 last_boat.append(boat)
                 check = 0
                 selection = False
@@ -107,7 +107,7 @@ def set_ships():
         row = random_num()
         com_ships[key] = [col], [row]
         com_board[row][col] = [' @ ']
-    print('---"computer seting its ships"---')
+    print('---"computer setting its ships"---')
     display_ships()
     
 def display_ships():
@@ -176,51 +176,79 @@ def start_game():
     while game_on:
         print('-----"READY TO FIGHT"-----')
         print('\n///missile tubes ready///')
-        print('\n---"Captain select a column"---')
-        guess_col = input()
-        print('\n---"Captain select a row"---')
-        guess_row = input()
-        print("\n///LAUNCH MISSILE///")
-        print('---"missile away"---')
-        print(com_board[guess_col][guess_row])
-        if com_board[guess_col][guess_row][0] == '@':
-            print('\n---"KABOOM"---')
-            print('---"Thats a hit Captain"---')
-            com_board[guess_col][guess_row][0] = 'X'
-            com_pseudo_board[guess_col][guess_row][0] = 'X'
-            com_lives -= 1
-            display_ships()
-        else:
-            print('\n---"SPLASH"---')
-            print('---"Thats a miss Captain"---')
-            com_board[guess_col][guess_row][0] = 'O'
-            com_pseudo_board[guess_col][guess_row][0] = 'O'
-            display_ships()
+        missile_flight = True
+        while missile_flight:
+            print('\n---"Captain select a column"---')
+            guess_col = int(input())
+            print('\n---"Captain select a row"---')
+            guess_row = int(input())
+            print("\n///LAUNCH MISSILE///")
+            print('---"missile away"---')
+            if player_lives == 0:
+                missile_flight = False
+            elif com_board[guess_row][guess_col][0] == ' @ ':
+                print('\n---"KABOOM"---')
+                print('---"Thats a hit Captain"---')
+                com_board[guess_row][guess_col][0] = ' X '
+                com_pseudo_board[guess_row][guess_col][0] = ' X '
+                missile_flight = False
+                com_lives -= 1
+                display_ships()
+            elif com_board[guess_row][guess_col][0] == ' O ':
+                print('\n---"Uhh, Captain we already hit that spot"---\n')
+                display_ships()
+                print('---"Here Sir, fresh coffee')
+                print('\n---"Requesting new co-ordinates, Sir"---\n')
+            elif com_board[guess_row][guess_col][0] == ' X ':
+                print('\n---"Uhh, Captain we already hit that spot"---')
+                display_ships()
+                print('---"Yep, there toast"---\n')
+                print('---"Requesting new co-ordinates, Sir"---\n')
+            else:
+                print('\n---"SPLASH"---')
+                print('---"Thats a miss Captain"---\n')
+                com_board[guess_row][guess_col][0] = ' O '
+                com_pseudo_board[guess_row][guess_col][0] = ' O '
+                missile_flight = False
+                display_ships()
         print('\n---"ALARM"---')
         print('---"incoming missile Captain"---')
-        com_guess1 = random_num()
-        com_guess2 = random_num()
-        if player_board[com_guess1][com_guess2][0] == '@':
-            print('\n---"KABOOM"---')
-            print('---"Thats a hit Captain"---')
-            player_board[com_guess1][com_guess2][0] = 'X'
-            player_lives -= 1
-            display_ships()
-        else:
-            print('\n---"SPLASH"---')
-            print('---"Thats a miss Captain"---')
-            player_board[com_guess1][com_guess2][0] = 'O'
-            display_ships()
-        if player_lives == 0:
+        enemy_fire = True
+        while enemy_fire:
+            com_guess1 = random_num()
+            com_guess2 = random_num()
+            if com_lives == 0:
+                enemy_fire = False
+            elif player_board[com_guess1][com_guess2][0] == ' @ ':
+                print('\n---"KABOOM"---')
+                print('---"Thats a hit Captain"---\n')
+                player_board[com_guess1][com_guess2][0] = ' X '
+                player_lives -= 1
+                enemy_fire = False
+                display_ships()
+            elif player_board[com_guess1][com_guess2][0] == ' O ':
+                print('\n---"Ha, there just hitting open water and fish"---')
+                print('---"poor fish"---')
+
+            elif player_board[com_guess1][com_guess2][0] == ' X ':
+                print('\n---"those idiots were aiming at a downed ship"---')
+                
+            else:
+                print('\n---"SPLASH"---')
+                print('---"Thats a miss Captain"---\n')
+                player_board[com_guess1][com_guess2][0] = ' O '
+                enemy_fire = False
+                display_ships()
+        if com_lives == 0:
             print('\n---"GAME OVER"---')
             print('---"YOU WIN"---')
             game_on = False
-        elif com_lives == 0:
+        elif player_lives == 0:
             print('\n---"GAME OVER"---')
             print('\n---"YOU LOST"---')
             game_on = False
         else:
-            print('---"Were still in this fight Captain"---')
+            print('\n---"Were still in this fight Captain"---\n')
 
 
 def main():
