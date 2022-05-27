@@ -45,14 +45,15 @@ def get_board_size():
             print("you need to pick a number between 5-14")
     return count
 
-def set_board_size():       
+def set_board_size():     
     for x in range(board_size):
         player_board.append([])
         com_board.append([])
+        com_pseudo_board.append([])
         for y in range(board_size):
             player_board[x].append([' - '])
             com_board[x].append([' - '])
-            
+            com_pseudo_board[x].append([' - '])
 def set_ships():
     #this is the conditional so that ships do not occupy the same space
     print("Please select the locations of your ships")
@@ -70,7 +71,7 @@ def set_ships():
             while col_pick:
                 col = int(input())
                 if col not in range(0, board_size):
-                    print("nope out of range try again")
+                    print("---nope out of range try again---")
                 else:
                     col_pick = False
             rows = board_size
@@ -80,7 +81,7 @@ def set_ships():
             while row_pick:
                 row = int(input())
                 if row not in range(0, board_size):
-                    print("nope out of range, try again")
+                    print("---nope out of range, try again---")
                 else:
                     row_pick = False
             boat = row, col
@@ -89,9 +90,9 @@ def set_ships():
                 if boat == last_boat[x]:
                     check += 1 
             if check > 0:
-                print("\nThis position is taken sailor\n")
+                print('\n---"This position is taken sailor\n"---')
             else:
-                print("\nYep, looks good setting up here captain\n")
+                print('\n---"Yep, looks good setting up here captain"---\n')
                 last_boat.append(boat)
                 check = 0
                 selection = False
@@ -101,15 +102,13 @@ def set_ships():
         print(player_ships)
         player_board[row][col] = [' @ ']
         display_ships()
-
-def set_com_ships():
-    col = random_num()
-    row = random_num()
-    print(col)
-    print(row)
-    com_board[row][col] = [' @ ']
+    for key, value in com_ships.items():
+        col = random_num()
+        row = random_num()
+        com_ships[key] = [col], [row]
+        com_board[row][col] = [' @ ']
+    print('---"computer seting its ships"---')
     display_ships()
-    print(player_ships)
     
     
 def display_ships():
@@ -162,14 +161,14 @@ def display_ships():
             for x in range(board_size):
                 print(f'{x}', end=" | ")
                 for y in range(board_size):
-                    print(f'{com_board[x][y][0]}', end=" | ")
+                    print(f'{com_pseudo_board[x][y][0]}', end=" | ")
                 print("")
                 print("")
         elif selection == 's':
             print("")
             blue = False
         else:
-            print("that selection is not supported")
+            print("\n---That selection is not supported---\n")
 
 def main():
     board_size = get_board_size()
@@ -198,7 +197,7 @@ def main():
         print("")
         print("")
         '''
-#main()
+main()
 
-set_com_ships()
+
 
